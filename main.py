@@ -47,12 +47,12 @@ async def make_egreso(egreso: EgresoIn):
     salida = EgresoOut(**egreso_in_db.dict())
     return salida
 
-@api.get("/user/egresos/{tipo_egreso}")
+@api.get("/user/egresos/{tipo_egreso}", response_model=List)
 async def get_egresos_main(tipo_egreso: str):
     egreso_in_db = get_egresos(tipo_egreso)
     if egreso_in_db == None:
         raise HTTPException(status_code=404,
                             detail="El tipo de egreso no existe")
-    egreso_out = json.dumps(EgresoOut(**egreso_in_db.dict()))
+    egreso_out = EgresoList(**EgresoOut(**egreso_in_db.dict()))
 
     return egreso_out

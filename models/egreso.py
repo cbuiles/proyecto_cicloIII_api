@@ -12,5 +12,3 @@ class EgresoOut(BaseModel):
     valor: int
     fecha:date
 
-class EgresoList(BaseModel):
-    lista: List[EgresoOut]

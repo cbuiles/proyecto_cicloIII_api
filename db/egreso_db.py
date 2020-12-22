@@ -17,28 +17,18 @@ database_transporte = []
 database_servicios = []
 database_ocio = []
 
-database_arriendo.append(EgresoInDB(**{
-        "tipo": "arriendo",
-        "valor": 1000,
-        "fecha": date.today()
-    }).dict())
 
-database_arriendo.append(EgresoInDB(**{
-        "tipo": "arriendo",
-        "valor": 5000,
-        "fecha": date.today()
-    }).dict())
 
 def save_egresos(egreso_in_db: EgresoInDB):
     if egreso_in_db.tipo == "arriendo":
-        database_arriendo.append(egreso_in_db)
+      database_arriendo.append(egreso_in_db)  
     elif egreso_in_db.tipo == "transporte":
-        database_transporte.append((egreso_in_db))
+      database_transporte.append((egreso_in_db))
     elif egreso_in_db.tipo == "servicios":
-        database_servicios.append((egreso_in_db))
+      database_servicios.append((egreso_in_db))
     elif egreso_in_db.tipo == "ocio":
-        database_ocio.append((egreso_in_db))
-    return egreso_in_db
+      database_ocio.append((egreso_in_db))
+
 
 def get_egresos(tipo: str):
     if tipo == "arriendo":
